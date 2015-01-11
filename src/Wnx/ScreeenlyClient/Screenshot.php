@@ -56,6 +56,7 @@ class Screenshot {
     }
 
     public function store()
+    public function store($storagePath = '')
     {
         $path = $this->getPath();
         $pathinfo = pathinfo($path);
@@ -64,7 +65,7 @@ class Screenshot {
 
         $data = file_get_contents($path);
 
-        file_put_contents($filename, $data);
+        file_put_contents($storagePath . $filename, $data);
 
         return $filename;
     }
