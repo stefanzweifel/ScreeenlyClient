@@ -123,7 +123,7 @@ class Screenshot {
 
         file_put_contents($storagePath . $filename, $data);
 
-        return $filename;
+        return $storagePath . $filename;
     }
 
 }
