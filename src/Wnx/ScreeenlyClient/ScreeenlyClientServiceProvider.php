@@ -1,5 +1,6 @@
 <?php namespace Wnx\ScreeenlyClient;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Wnx\ScreeenlyClient\Screenshot;
 use Config;
@@ -28,6 +29,16 @@ class ScreeenlyClientServiceProvider extends ServiceProvider {
 
             return new Screenshot($key);
         });
+	}
+
+	public function boot()
+	{
+		$this->package('wnx/screeenly-client');
+
+        AliasLoader::getInstance()->alias(
+            'Screenshot',
+            'Wnx\ScreeenlyClient\Facades\Screenshot'
+        );
 	}
 
 	/**
