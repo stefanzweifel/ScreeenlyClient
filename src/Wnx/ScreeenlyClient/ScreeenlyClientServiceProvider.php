@@ -1,6 +1,8 @@
 <?php namespace Wnx\ScreeenlyClient;
 
 use Illuminate\Support\ServiceProvider;
+use Wnx\ScreeenlyClient\Screenshot;
+use Config;
 
 class ScreeenlyClientServiceProvider extends ServiceProvider {
 
@@ -18,7 +20,14 @@ class ScreeenlyClientServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->package('wnx/screeenly-client');
+
+		$this->app->bind('Screenshot', function($app) {
+
+            $key = Config::get('screeenly-client::secret');
+
+            return new Screenshot($key);
+        });
 	}
 
 	/**
