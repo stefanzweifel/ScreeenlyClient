@@ -3,7 +3,6 @@
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Wnx\ScreeenlyClient\Screenshot;
-use Config;
 
 class ScreeenlyClientServiceProvider extends ServiceProvider {
 
@@ -25,7 +24,7 @@ class ScreeenlyClientServiceProvider extends ServiceProvider {
 
 		$this->app->bind('Screenshot', function($app) {
 
-            $key = Config::get('screeenly-client::secret');
+            $key = $this->app['config']->get('screeenly-client::secret');
 
             return new Screenshot($key);
         });
