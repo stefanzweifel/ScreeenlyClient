@@ -3,7 +3,7 @@
 use \Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Namespace
+ * @see \Wnx\ScreeenlyClient\
  */
 class Screenshot extends Facade {
 
