@@ -33,8 +33,8 @@ php artisan config:publish wnx/screeenly-client
 ```
 
 ```php
-Screenshot::capture('http://google.com');
-$localPath = Screenshot::store($path);
+$screenshot = Screenshot::capture('http://google.com');
+$localPath  = $screenshot->store('path/to/image/store/', 'screenshot.jpg');
 ```
 
 ### Non-Laravel Usage
@@ -44,8 +44,8 @@ use Wnx\ScreeenlyClient\Screenshot;
 ...
 
 $screenshot = new Screenshot($key);
-$screenshot->capture($url);
-$localPath = $screenshot->store($path);
+$screenshot->capture('http://google.com');
+$localPath = $screenshot->store('path/to/image/store/', 'screenshot.jpg');
 ```
 
 ## Available Methods
@@ -73,11 +73,6 @@ Return path to temporary image on Screeenly server.
 ### `getBase64()`
 
 Return base64-string for screenshot.
-
-## Bucket list
-
-- Improve code structure
-- Write tests
 
 ## License
 
