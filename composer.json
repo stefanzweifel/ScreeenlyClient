@@ -1,10 +1,14 @@
 {
     "name": "wnx/screeenly-client",
     "description": "PHP API Wrapper for screeenly.com",
+    "license": "MIT",
+    "homepage": "https://github.com/stefanzweifel/ScreeenlyClient",
     "authors": [
         {
             "name": "Stefan Zweifel",
-            "email": "hello@stefanzweifel.io"
+            "email": "hello@stefanzweifel.io",
+            "homepage": "http://stefanzweifel.io",
+            "role": "Developer & Maintainer"
         }
     ],
     "require": {
@@ -20,5 +24,11 @@
             "Wnx\\ScreeenlyClient": "src/"
         }
     },
+    "keywords": [
+        "screeenly",
+        "laravel",
+        "Screenshot",
+        "API"
+    ],
     "minimum-stability": "stable"
 }
