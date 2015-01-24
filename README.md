@@ -1,5 +1,8 @@
 # ScreenlyClient
 
+[![Build Status](https://travis-ci.org/stefanzweifel/ScreeenlyClient.svg)](https://travis-ci.org/stefanzweifel/ScreeenlyClient)<br>
+[![Latest Stable Version](https://poser.pugx.org/wnx/screeenly-client/v/stable.svg)](https://packagist.org/packages/wnx/screeenly-client) [![Total Downloads](https://poser.pugx.org/wnx/screeenly-client/downloads.svg)](https://packagist.org/packages/wnx/screeenly-client) [![Latest Unstable Version](https://poser.pugx.org/wnx/screeenly-client/v/unstable.svg)](https://packagist.org/packages/wnx/screeenly-client) [![License](https://poser.pugx.org/wnx/screeenly-client/license.svg)](https://packagist.org/packages/wnx/screeenly-client)
+
 PHP Wrapper for the [Screeenly API](http://screeenly.com). You must have a Screeenly account to use this package.
 > Feedback is always welcome :)
 
