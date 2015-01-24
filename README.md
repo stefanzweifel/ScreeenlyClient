@@ -74,11 +74,6 @@ Return path to temporary image on Screeenly server.
 
 Return base64-string for screenshot.
 
-## Bucket list
-
-- Improve code structure
-- Write tests
-
 ## License
 
 MIT
