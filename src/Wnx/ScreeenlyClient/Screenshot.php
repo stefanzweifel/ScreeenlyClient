@@ -35,12 +35,23 @@ class Screenshot {
     protected $width = 1024;
 
     /**
+     * Local Filename
+     * @var string
+     */
+    public $localFilename;
+
+    /**
+     * LocalStoragePath
+     * @var string
+     */
+    public $localStoragePath;
+
+    /**
      * @param string $key Screeenly API Key
      */
     public function __construct($key)
     {
         $this->key = $key;
-
     }
 
     /**
@@ -50,6 +61,7 @@ class Screenshot {
      */
     public function capture($url)
     {
+        $this->setUrl($url);
         $client = new Client();
         $response = $client->post('http://screeenly.com/api/v1/fullsize', ['body' =>
             [
@@ -62,7 +74,41 @@ class Screenshot {
 
         $this->response = (object) $response->json();
 
-        return $this->response;
+        return $this;
+    }
+
+    /**
+     * Store Screenshot no disk
+     * @param  string $storagePath
+     * @param  string $filename
+     * @return string              Local Storage Path
+     */
+    public function store($storagePath = '', $filename = '')
+    {
+        $path     = $this->getPath();
+        $pathinfo = pathinfo($path);
+        $data     = file_get_contents($path);
+
+        // Use Original Filename if no specific filename is set
+        if (empty($filename)) {
+            $filename = $pathinfo['filename'] . '.jpg';
+        }
+
+        file_put_contents($storagePath . $filename, $data);
+
+        $this->setLocalStoragePath($storagePath);
+        $this->setLocalFilename($filename);
+
+        return $storagePath . $filename;
+    }
+
+    /**
+     * Set Url
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        return $this->url = $url;
     }
 
     /**
@@ -108,20 +154,21 @@ class Screenshot {
     }
 
     /**
-     * Store Screenshot no disk
-     * @param  string $storagePath
-     * @return string              Filename
+     * Set Local StoragePath
+     * @param string $path
      */
-    public function store($storagePath = '')
+    public function setLocalStoragePath($path)
     {
-        $path     = $this->getPath();
-        $pathinfo = pathinfo($path);
-        $filename = $pathinfo['filename'] . '.jpg';
-        $data     = file_get_contents($path);
+        return $this->localStoragePath = $path;
+    }
 
-        file_put_contents($storagePath . $filename, $data);
-
-        return $storagePath . $filename;
+    /**
+     * Set Local Filename
+     * @param string $filename
+     */
+    public function setLocalFilename($filename)
+    {
+        return $this->localFilename = $filename;
     }
 
 }
