@@ -58,7 +58,7 @@ class Screenshot {
                 'width'  => $this->width,
                 'height' => $this->height
             ]
-            ]);
+        ]);
 
         $this->response = (object) $response->json();
 
@@ -74,7 +74,7 @@ class Screenshot {
         if (is_numeric($height) === false) {
             throw new \Exception('Height must be numeric', 1);
         }
-        $this->height = $height;
+        return $this->height = $height;
     }
 
     /**
@@ -86,7 +86,7 @@ class Screenshot {
         if (is_numeric($width) === false) {
             throw new \Exception('Width must be numeric', 1);
         }
-        $this->width = $width;
+        return $this->width = $width;
     }
 
     /**
@@ -114,12 +114,10 @@ class Screenshot {
      */
     public function store($storagePath = '')
     {
-        $path = $this->getPath();
+        $path     = $this->getPath();
         $pathinfo = pathinfo($path);
-
         $filename = $pathinfo['filename'] . '.jpg';
-
-        $data = file_get_contents($path);
+        $data     = file_get_contents($path);
 
         file_put_contents($storagePath . $filename, $data);
 
