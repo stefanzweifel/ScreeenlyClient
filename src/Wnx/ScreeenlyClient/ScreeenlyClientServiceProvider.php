@@ -7,47 +7,33 @@ use Wnx\ScreeenlyClient\Screenshot;
 class ScreeenlyClientServiceProvider extends ServiceProvider {
 
 	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
-
-	/**
 	 * Register the service provider.
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
-		$this->package('wnx/screeenly-client');
+    public function register()
+    {
+        $this->app->bind('Screenshot', function ($app) {
 
-		$this->app->bind('Screenshot', function($app) {
-
-            $key = $this->app['config']->get('screeenly-client::secret');
+            $key = config('screeenly_client.secret');
 
             return new Screenshot($key);
         });
-	}
+    }
 
-	public function boot()
-	{
-		$this->package('wnx/screeenly-client');
+    /**
+     * Publish the plugin configuration.
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/config/screeenly_client.php' => config_path('screeenly_client.php')
+        ]);
 
         AliasLoader::getInstance()->alias(
             'Screenshot',
             'Wnx\ScreeenlyClient\Facades\Screenshot'
         );
-	}
-
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return array();
-	}
+    }
 
 }
