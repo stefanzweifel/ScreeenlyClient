@@ -4,19 +4,23 @@
 [![Latest Stable Version](https://poser.pugx.org/wnx/screeenly-client/v/stable.svg)](https://packagist.org/packages/wnx/screeenly-client) [![Total Downloads](https://poser.pugx.org/wnx/screeenly-client/downloads.svg)](https://packagist.org/packages/wnx/screeenly-client) [![Latest Unstable Version](https://poser.pugx.org/wnx/screeenly-client/v/unstable.svg)](https://packagist.org/packages/wnx/screeenly-client) [![License](https://poser.pugx.org/wnx/screeenly-client/license.svg)](https://packagist.org/packages/wnx/screeenly-client)
 
 PHP Wrapper for the [Screeenly API](http://screeenly.com). You must have a Screeenly account to use this package.
-> Feedback is always welcome :)
+> Feedback is always appreciated :)
 
 ## Installation
 
-Install the package with composer:
+Install the package through composer:
 
 ```
-$ composer require wnx/screeenly-client ~0.1
+$ composer require wnx/screeenly-client ~1.0
 ```
+
+> Use version ~0.3 for your Laravel 4 project 
 
 ## Usage
 
-### Laravel
+### Laravel 5 
+
+> [Read more](https://github.com/stefanzweifel/ScreeenlyClient/tree/6bd7c832fc640e431bc1883fb93db29596d8b91d) for Laravel 4 usage.
 
 Add the following code to your `providers` array in `app/conifg/app.php`:
 
@@ -26,16 +30,20 @@ Add the following code to your `providers` array in `app/conifg/app.php`:
 'Wnx\ScreeenlyClient\ScreeenlyClientServiceProvider',
 ```
 
-Publish config file and enter you Screeenly API key in `config/packages/wnx/screeenly-client/config.php`
+Publish the configration file and add your Screeenly API Key in `config/screeenly_client.php`.
 
 ```bash
-php artisan config:publish wnx/screeenly-client
+php artisan vendor:publish --provider="Wnx\ScreeenlyClient\ScreeenlyClientServiceProvider"
 ```
 
+Now you have access to the Screenshot Facade. Use it like the example below:
+
 ```php
+$path       = public_path('/');
 $screenshot = Screenshot::capture('http://google.com');
-$localPath  = $screenshot->store('path/to/image/store/', 'screenshot.jpg');
+$localPath  = $screenshot->store($path, 'screenshot.jpg');
 ```
+
 
 ### Non-Laravel Usage
 
@@ -54,7 +62,7 @@ $localPath = $screenshot->store('path/to/image/store/', 'screenshot.jpg');
 
 Create Screenshot of given URL.
 
-### `store($path)`
+### `store($path, $filename)`
 
 Store screenshot on local disk. Returns path to image.
 
