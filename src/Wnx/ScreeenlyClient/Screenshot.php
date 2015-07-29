@@ -47,6 +47,12 @@ class Screenshot {
     public $localStoragePath;
 
     /**
+     * URL to screeenly API
+     * @var string
+     */
+    protected $apiUrl = 'http://screeenly.com/api/v1/fullsize';
+
+    /**
      * @param string $key Screeenly API Key
      */
     public function __construct($key)
@@ -62,8 +68,9 @@ class Screenshot {
     public function capture($url)
     {
         $this->setUrl($url);
+
         $client = new Client();
-        $response = $client->post('http://screeenly.com/api/v1/fullsize', ['body' =>
+        $response = $client->post($this->apiUrl, ['form_params' =>
             [
                 'key'    => $this->key,
                 'url'    => $url,
@@ -72,7 +79,10 @@ class Screenshot {
             ]
         ]);
 
-        $this->response = (object) $response->json();
+        $responseJson =  $response->getBody();
+        $responseArray = json_decode($responseJson);
+
+        $this->response = $responseArray;
 
         return $this;
     }
