@@ -8,19 +8,28 @@ PHP Wrapper for the [Screeenly API](http://screeenly.com). You must have a Scree
 
 ## Installation
 
-Install the package through composer:
+Install the package with composer:
 
+Guzzle v6:     
 ```
-$ composer require wnx/screeenly-client ~1.0
+$ composer require wnx/screeenly-client~1.0
 ```
 
-> Use version ~0.3 for your Laravel 4 project 
+Guzzle v5:   
+```
+$ composer require wnx/screeenly-client~2.0
+```
+
+For Laravel 4 prjoects:   
+```
+$ composer require wnx/screeenly-client~0.3
+```
 
 ## Usage
 
 ### Laravel 5 
 
-> [Read more](https://github.com/stefanzweifel/ScreeenlyClient/tree/6bd7c832fc640e431bc1883fb93db29596d8b91d) for Laravel 4 usage.
+> [Read more](https://github.com/stefanzweifel/ScreeenlyClient/tree/v0.3.0) for Laravel 4 usage.
 
 Add the following code to your `providers` array in `app/conifg/app.php`:
 
@@ -58,27 +67,27 @@ $localPath = $screenshot->store('path/to/image/store/', 'screenshot.jpg');
 
 ## Available Methods
 
-### `capture($url)`
+### `$screeenshot->capture($url);`
 
 Create Screenshot of given URL.
 
-### `store($path, $filename)`
+### `$screeenshot->store($path, $filename);`
 
 Store screenshot on local disk. Returns path to image.
 
-### `setHeight(integer)`
+### `$screeenshot->setHeight(integer);`
 
 Optional. Set screenshot height.
 
-### `setWidth(integer)`
+### `$screeenshot->setWidth(integer);`
 
 Optional. Set screenshot width.
 
-### `getPath()`
+### `$screeenshot->getPath();`
 
 Return path to temporary image on Screeenly server.
 
-### `getBase64()`
+### `$screeenshot->getBase64();`
 
 Return base64-string for screenshot.
 
