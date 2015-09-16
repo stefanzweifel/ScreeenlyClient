@@ -12,17 +12,17 @@ Install the package with composer:
 
 Guzzle v6:     
 ```
-$ composer require wnx/screeenly-client~2.0
+$ composer require "wnx/screeenly-client:~2.0"
 ```
 
 Guzzle v5:   
 ```
-$ composer require wnx/screeenly-client~1.0
+$ composer require "wnx/screeenly-client:~1.0"
 ```
 
 For Laravel 4 prjoects:   
 ```
-$ composer require wnx/screeenly-client~0.3
+$ composer require "wnx/screeenly-client:~0.3"
 ```
 
 ## Usage
