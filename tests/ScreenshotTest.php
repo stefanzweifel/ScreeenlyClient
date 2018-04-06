@@ -1,8 +1,9 @@
 <?php namespace Wnx\ScreeenlyClient;
 
+use PHPUnit\Framework\TestCase;
 use Wnx\ScreeenlyClient\Screenshot;
 
-class ScreenshotTest extends \PHPUnit_Framework_TestCase {
+class ScreenshotTest extends TestCase {
 
     public function testIsInstanceOfScreenshot()
     {
