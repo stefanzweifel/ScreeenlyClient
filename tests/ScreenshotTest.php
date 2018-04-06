@@ -65,6 +65,14 @@ class ScreenshotTest extends TestCase {
         $screenshot->capture('http://google.com');
     }
 
+    /** @test */
+    public function it_allows_user_to_change_api_endpoint_url()
+    {
+        $screenshot = new Screenshot('secret');
+
+        $screenshot->apiUrl = 'http://custom-screeenly.com/api/v1/fullsize';
+
+        $this->assertEquals('http://custom-screeenly.com/api/v1/fullsize', $screenshot->apiUrl);
+    }
 
 }
-

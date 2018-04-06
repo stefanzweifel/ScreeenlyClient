@@ -50,7 +50,7 @@ class Screenshot {
      * URL to screeenly API
      * @var string
      */
-    protected $apiUrl = 'http://screeenly.com/api/v1/fullsize';
+    public $apiUrl = 'http://screeenly.com/api/v1/fullsize';
 
     /**
      * @param string $key Screeenly API Key
